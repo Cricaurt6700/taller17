@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Taller3.author>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+
+    #searching {
+        display: inline-block
+    }
+</style>
+
+@using (Html.BeginForm("Index", "Author", FormMethod.Get))
+{
+    <div class="form-group">
+        <label for="searching" style="display:block">Buscar por nombre</label>
+        @Html.TextBox("searching", null, new { @class = "form-control" })
+        <input type="submit" class="btn btn-primary" value="buscar" style="display: inline-block" />
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Codigo Author</th>
+            <th>Apellido</th>
+            <th>Nombre</th>
+            <th>Telefono</th>
+            <th>Direccion</th>
+            <th>Ciudad</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.au_id)</td>
+                <td>@Html.DisplayFor(modelItem => item.au_lname)</td>
+                <td>@Html.DisplayFor(modelItem => item.au_fname)</td>
+                <td>@Html.DisplayFor(modelItem => item.phone)</td>
+                <td>@Html.DisplayFor(modelItem => item.address)</td>
+                <td>@Html.DisplayFor(modelItem => item.city)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
